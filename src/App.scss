@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'RubikScribble';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/fonts/RubikScribble-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/fonts/RubikMaps-Regular.ttf');
+}
+
+html,
+body,
+:root {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+}
+
+.app {
+  h1 {
+    color: #007bff;
+    font-size: large;
+    font-weight: 700;
+    font-size: 32px;
+    font-family: 'RubikScribble', Helvetica, sans-serif;
+    color: #212529;
+  }
+  .bless {
+    font-family: 'Rubik', Helvetica;
+    font-size: 48px;
+    font-weight: bold;
+    color: #fb2;
+  }
+}
