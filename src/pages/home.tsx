@@ -1,10 +1,17 @@
 import island from '@/assets/island.png';
 import wallpaper from '@/assets/wallhaven-o3o817.png';
-import './styles/index.scss';
+import { useNavigate } from 'react-router';
 
-const App = () => {
+const Home = () => {
+  const navigate = useNavigate();
+
+  const goPage = () => {
+    navigate('/about');
+  };
+
   return (
-    <div className="app">
+    <div>
+      {' '}
       <h1>Hello React!</h1>
       <p>
         <img
@@ -23,10 +30,14 @@ const App = () => {
         />
       </p>
       <p className="bless">god bless you</p>
-
-      <p className="text-4xl text-red-400">i love you</p>
+      <button
+        className="text-2xl text-green-400 underline-red-500"
+        onClick={goPage}
+      >
+        about
+      </button>
     </div>
   );
 };
 
-export default App;
+export default Home;
