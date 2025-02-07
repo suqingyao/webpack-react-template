@@ -1,6 +1,6 @@
 import island from '@/assets/island.png';
 import wallpaper from '@/assets/wallhaven-o3o817.png';
-import './App.scss';
+import './styles/index.scss';
 
 const App = () => {
   return (
@@ -23,6 +23,8 @@ const App = () => {
         />
       </p>
       <p className="bless">god bless you</p>
+
+      <p className="text-4xl text-red-400">i love you</p>
     </div>
   );
 };

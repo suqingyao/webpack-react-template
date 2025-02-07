@@ -6,13 +6,13 @@ module.exports = {
   devtool: 'source-map',
   output: {
     filename: '[name][contenthash].js',
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'dist'),
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
-      '@': path.resolve(__dirname, 'src')
-    }
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
   module: {
     rules: [
@@ -27,13 +27,13 @@ module.exports = {
               [
                 '@babel/preset-react',
                 {
-                  runtime: 'automatic'
-                }
+                  runtime: 'automatic',
+                },
               ],
-              '@babel/preset-typescript'
-            ]
-          }
-        }
+              '@babel/preset-typescript',
+            ],
+          },
+        },
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -46,10 +46,10 @@ module.exports = {
               fallback: 'file-loader',
               name: '[name][hash:7].[ext]',
               publicPath: 'images/',
-              outputPath: 'images/'
-            }
-          }
-        ]
+              outputPath: 'images/',
+            },
+          },
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -60,18 +60,18 @@ module.exports = {
             options: {
               outputPath: 'css/fonts/',
               publicPath: 'css/fonts/',
-              esModule: false
-            }
-          }
+              esModule: false,
+            },
+          },
         ],
-        type: 'javascript/auto'
-      }
-    ]
+        type: 'javascript/auto',
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src/index.html'),
-      publicPath: '/'
-    })
-  ]
+      template: path.resolve(__dirname, 'index.html'),
+      publicPath: '/',
+    }),
+  ],
 };

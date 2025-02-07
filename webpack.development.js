@@ -6,16 +6,28 @@ module.exports = merge(require('./webpack.common.js'), {
   devServer: {
     hot: true,
     port: 3000,
-    open: true
+    open: true,
   },
   module: {
     rules: [
       {
         test: /\.s?(c|a)ss$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
-      }
-    ]
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              // postcssOptions: {
+              //   plugins: [require('autoprefixer'), require('cssnano')],
+              // },
+            },
+          },
+          'sass-loader',
+        ],
+      },
+    ],
   },
-  plugins: []
+  plugins: [],
 });
