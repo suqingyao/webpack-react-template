@@ -7,7 +7,6 @@ import { RouteObject } from "@/routes/interface";
 const dashboardRouter: Array<RouteObject> = [
   {
     element: <LayoutIndex />,
-
     meta: {
       title: "Dashboard",
     },

@@ -1,5 +1,11 @@
+import { Outlet } from "react-router";
+
 const LayoutIndex = () => {
-  return <div>hello</div>;
+  return (
+    <div>
+      <Outlet />
+    </div>
+  );
 };
 
 export default LayoutIndex;
