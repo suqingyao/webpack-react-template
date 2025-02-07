@@ -1,22 +1,41 @@
-import { RouteObject } from 'react-router';
-import AuthLayout from '@/layouts/auth-layout';
-import About from '@/pages/about';
-import Home from '@/pages/home';
+import { Navigate, useRoutes } from "react-router";
+import SignIn from "@/pages/auth/sign-in";
+import { RouteObject } from "./interface";
 
-const routes: RouteObject[] = [
+export const routerArray: RouteObject[] = [];
+const metaRouters = require.context("./modules", true, /\.tsx$/);
+
+metaRouters.keys().forEach((key: any) => {
+  const module = metaRouters(key);
+  Object.keys(module).forEach((routeKey) => {
+    routerArray.push(...module[routeKey]);
+  });
+});
+
+export const rootRouter: RouteObject[] = [
   {
-    path: '/',
-    element: <Home />,
+    path: "/",
+    element: <Navigate to="/signIn" />,
   },
   {
-    element: <AuthLayout />,
-    children: [
-      {
-        path: 'about',
-        element: <About />,
-      },
-    ],
+    path: "/signIn",
+    element: <SignIn />,
+    meta: {
+      requiresAuth: false,
+      title: "登录页",
+      key: "login",
+    },
+  },
+  ...routerArray,
+  {
+    path: "*",
+    element: <Navigate to="/404" />,
   },
 ];
 
-export default routes;
+const Router = () => {
+  const routes = useRoutes(rootRouter);
+  return routes;
+};
+
+export default Router;

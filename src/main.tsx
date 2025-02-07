@@ -1,13 +1,4 @@
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, useRoutes } from 'react-router';
-import routes from './routes';
+import App from './App';
 
-import './styles/index.scss';
-
-const App = () => useRoutes(routes);
-
-createRoot(document.getElementById('root') as HTMLDivElement).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-);
+createRoot(document.getElementById('root') as HTMLDivElement).render(<App />);
