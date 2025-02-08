@@ -1,19 +1,19 @@
-import { Outlet } from "react-router";
-import { Layout } from "antd";
-import { LayoutMenu } from "./components/menu";
-import { LayoutHeader } from "./components/header";
-import { LayoutFooter } from "./components/footer";
-import { LayoutTabs } from "./components/tabs";
+import { Layout } from 'antd'
+import { Outlet } from 'react-router'
+import { LayoutFooter } from './components/footer'
+import { LayoutHeader } from './components/header'
+import { LayoutMenu } from './components/menu'
+import { LayoutTabs } from './components/tabs'
 
-const { Sider, Content } = Layout;
+const { Sider, Content } = Layout
 
 const layoutStyle = {
-  overflow: "hidden",
-  width: "100%",
-  height: "100%",
-};
+  overflow: 'hidden',
+  width: '100%',
+  height: '100%',
+}
 
-const LayoutIndex = () => {
+function LayoutIndex() {
   return (
     <Layout style={layoutStyle}>
       <Sider width="220">
@@ -28,7 +28,7 @@ const LayoutIndex = () => {
         <LayoutFooter />
       </Layout>
     </Layout>
-  );
-};
+  )
+}
 
-export default LayoutIndex;
+export default LayoutIndex

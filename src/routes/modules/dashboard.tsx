@@ -1,25 +1,25 @@
-import React from "react";
-import lazyLoad from "@/routes/utils/lazyLoad";
-import { LayoutIndex } from "@/routes/constant";
-import { RouteObject } from "@/routes/interface";
+import type { RouteObject } from '@/routes/interface'
+import { LayoutIndex } from '@/routes/constant'
+import lazyLoad from '@/routes/utils/lazyLoad'
+import React from 'react'
 
 // dashboard 模块
 const dashboardRouter: Array<RouteObject> = [
   {
     element: <LayoutIndex />,
     meta: {
-      title: "Dashboard",
+      title: 'Dashboard',
     },
     children: [
       {
-        path: "/dashboard/dataVisualize",
+        path: '/dashboard/dataVisualize',
         element: lazyLoad(
-          React.lazy(() => import("@/pages/dashboard/data-visualize/index"))
+          React.lazy(() => import('@/pages/dashboard/data-visualize/index')),
         ),
         meta: {
           requiresAuth: true,
-          title: "数据可视化",
-          key: "dataVisualize",
+          title: '数据可视化',
+          key: 'dataVisualize',
         },
       },
       // {
@@ -35,6 +35,6 @@ const dashboardRouter: Array<RouteObject> = [
       // },
     ],
   },
-];
+]
 
-export default dashboardRouter;
+export default dashboardRouter

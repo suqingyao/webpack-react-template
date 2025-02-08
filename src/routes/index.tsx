@@ -1,41 +1,41 @@
-import { Navigate, useRoutes } from "react-router";
-import SignIn from "@/pages/auth/sign-in";
-import { RouteObject } from "./interface";
+import type { RouteObject } from './interface'
+import SignIn from '@/pages/auth/sign-in'
+import { Navigate, useRoutes } from 'react-router'
 
-export const routerArray: RouteObject[] = [];
-const metaRouters = require.context("./modules", true, /\.tsx$/);
+export const routerArray: RouteObject[] = []
+const metaRouters = require.context('./modules', true, /\.tsx$/)
 
 metaRouters.keys().forEach((key: any) => {
-  const module = metaRouters(key);
+  const module = metaRouters(key)
   Object.keys(module).forEach((routeKey) => {
-    routerArray.push(...module[routeKey]);
-  });
-});
+    routerArray.push(...module[routeKey])
+  })
+})
 
 export const rootRouter: RouteObject[] = [
   {
-    path: "/",
+    path: '/',
     element: <Navigate to="/signIn" />,
   },
   {
-    path: "/signIn",
+    path: '/signIn',
     element: <SignIn />,
     meta: {
       requiresAuth: false,
-      title: "登录页",
-      key: "login",
+      title: '登录页',
+      key: 'login',
     },
   },
   ...routerArray,
   {
-    path: "*",
+    path: '*',
     element: <Navigate to="/404" />,
   },
-];
+]
 
-const Router = () => {
-  const routes = useRoutes(rootRouter);
-  return routes;
-};
+function Router() {
+  const routes = useRoutes(rootRouter)
+  return routes
+}
 
-export default Router;
+export default Router

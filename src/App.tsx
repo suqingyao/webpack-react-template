@@ -1,14 +1,14 @@
-import { BrowserRouter } from "react-router";
+import { BrowserRouter } from 'react-router'
 
-import Router from "./routes";
-import "./styles/index.scss";
+import Router from './routes'
+import './styles/index.scss'
 
-const App = () => {
+function App() {
   return (
     <BrowserRouter>
       <Router />
     </BrowserRouter>
-  );
-};
+  )
+}
 
-export default App;
+export default App

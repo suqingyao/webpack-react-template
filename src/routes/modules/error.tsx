@@ -1,6 +1,6 @@
-import React from "react";
-import lazyLoad from "@/routes/utils/lazyLoad";
-import { RouteObject } from "@/routes/interface";
+import type { RouteObject } from '@/routes/interface'
+import lazyLoad from '@/routes/utils/lazyLoad'
+import React from 'react'
 
 // 错误页面模块
 const errorRouter: Array<RouteObject> = [
@@ -16,14 +16,14 @@ const errorRouter: Array<RouteObject> = [
   //   },
   // },
   {
-    path: "/404",
+    path: '/404',
     element: lazyLoad(
-      React.lazy(() => import("@/components/error-message/404"))
+      React.lazy(() => import('@/components/error-message/404')),
     ),
     meta: {
       requiresAuth: false,
-      title: "404页面",
-      key: "404",
+      title: '404页面',
+      key: '404',
     },
   },
   // {
@@ -37,6 +37,6 @@ const errorRouter: Array<RouteObject> = [
   //     key: "500",
   //   },
   // },
-];
+]
 
-export default errorRouter;
+export default errorRouter
