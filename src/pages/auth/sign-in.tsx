@@ -6,7 +6,7 @@ const SignIn = () => {
   return (
     <div>
       <Button onClick={() => navigate("/dashboard/dataVisualize")}>
-        Click me
+        Login
       </Button>
     </div>
   );
