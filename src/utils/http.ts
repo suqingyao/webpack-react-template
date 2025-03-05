@@ -1,4 +1,6 @@
 import type { AxiosError, AxiosRequestConfig, Canceler } from 'axios'
+// eslint-disable-next-line unicorn/prefer-node-protocol
+import process from 'process'
 import { ResultEnum } from '@/config/enum'
 import NProgress from '@/config/nprogress'
 import { showFullScreenLoading, tryHideFullScreenLoading } from '@/config/serviceLoading'
@@ -46,13 +48,13 @@ class AxiosCanceler {
 
 const axiosCanceler = new AxiosCanceler()
 
-const instance = axios.create({
+const http = axios.create({
   baseURL: process.env.API_URL,
   timeout: 100000,
   withCredentials: true,
 })
 
-instance.interceptors.request.use(
+http.interceptors.request.use(
   (config) => {
     NProgress.start()
 
@@ -61,21 +63,16 @@ instance.interceptors.request.use(
     config.headers!.noLoading || showFullScreenLoading()
     // TODO set token
     const token = 'xxx'
+    config.headers.Authorization = `Bearer ${token}`
 
-    return {
-      ...config,
-      headers: {
-        ...config.headers,
-        Authorization: `Bearer ${token}`,
-      },
-    }
+    return config
   },
   (error) => {
     return Promise.reject(error)
   },
 )
 
-instance.interceptors.response.use(
+http.interceptors.response.use(
   (response) => {
     const { data, config } = response
     NProgress.done()
@@ -99,6 +96,7 @@ instance.interceptors.response.use(
   },
   (error: AxiosError) => {
     const { response } = error
+    console.warn('🚀 ~ response:', response)
     NProgress.done()
     tryHideFullScreenLoading()
     if (error.message.includes('timeout')) {
@@ -112,4 +110,4 @@ instance.interceptors.response.use(
   },
 )
 
-export default instance
+export default http

@@ -1,7 +1,14 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// import { createRequire } from 'node:module'
+import path, { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+// import NodePolyfillPlugin from 'node-polyfill-webpack-plugin'
+// import webpack from 'webpack'
 
-module.exports = {
+// const require = createRequire(import.meta.url)
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+export default {
   entry: './src/main.tsx',
   devtool: 'source-map',
   output: {
@@ -12,6 +19,12 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
       '@': path.resolve(__dirname, 'src'),
+    },
+    fullySpecified: false, // 关闭严格模块扩展检查
+    fallback: {
+      // process: require.resolve('process/browser'),
+      // buffer: require.resolve('buffer/'),
+      // stream: require.resolve('stream-browserify'),
     },
   },
   module: {
@@ -66,6 +79,13 @@ module.exports = {
         ],
         type: 'javascript/auto',
       },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
     ],
   },
   plugins: [
@@ -74,4 +94,4 @@ module.exports = {
       publicPath: '/',
     }),
   ],
-};
+}

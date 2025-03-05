@@ -1,9 +1,9 @@
-const { merge } = require('webpack-merge');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const path = require('path');
+import path from 'node:path'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import { merge } from 'webpack-merge'
 
-module.exports = merge(require('./webpack.common.js'), {
+export default merge(require('./webpack.common.js'), {
   mode: 'production',
   output: {
     filename: '[name].[hash].js',
@@ -26,7 +26,6 @@ module.exports = merge(require('./webpack.common.js'), {
               publicPath: '/', // 设置你的公共资源路径。按需进行修改
             },
           },
-          ,
           'css-loader',
           {
             loader: 'postcss-loader',
@@ -48,4 +47,4 @@ module.exports = merge(require('./webpack.common.js'), {
       chunkFilename: 'css/[id].css',
     }),
   ],
-});
+})

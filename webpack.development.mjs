@@ -1,11 +1,13 @@
-const { merge } = require('webpack-merge');
+import webpack from 'webpack'
+import { merge } from 'webpack-merge'
+import commonConfig from './webpack.common.mjs'
 
-module.exports = merge(require('./webpack.common.js'), {
+export default merge(commonConfig, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
     hot: true,
-    port: 3000,
+    port: 2333,
     open: true,
     historyApiFallback: true,
   },
@@ -28,7 +30,15 @@ module.exports = merge(require('./webpack.common.js'), {
           'sass-loader',
         ],
       },
+      {
+        test: '/\.css$/',
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
-  plugins: [],
-});
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+    }),
+  ],
+})
